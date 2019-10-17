@@ -1,5 +1,5 @@
 from django.urls import path
-from libcal.views import LibcalTokenView, SierraTokenView
+from .views import LibcalTokenView, SierraTokenView
 
 urlpatterns = [
     path('libcal/token', LibcalTokenView.as_view(), name='libcal-token'),
