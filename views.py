@@ -35,9 +35,10 @@ class SierraTokenView(APIView):
         sierra_client_secret = os.getenv(
             'ROOM_BOOKING_SIERRA_CLIENT_SECRET', None)
         preStr = "{0}:{1}".format(sierra_client_id, sierra_client_secret)
-        encoded = base64.b64encode(str.encode(preStr))
+        preByte = preStr.encode("utf-8")
+        encoded = base64.b64encode(preByte)
         headers = {"Content-Type": "application/json",
-                   "Authorization": "Basic {0}".format(encoded.decode("utf-8"))}
+                   "Authorization": "Basic {0}".format(encoded.decode('utf-8'))}
 
         url = 'https://libraries.colorado.edu/iii/sierra-api/v5/token'
         body = {
