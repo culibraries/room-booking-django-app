@@ -28,9 +28,9 @@ class LibcalTokenView(APIView):
 class SierraTokenView(APIView):
     permission_classes = (IsAuthenticated, IsAdmin)
     http_method_names = ['post']
-    api_url = 'https://libraries.colorado.edu/iii/sierra-api/v5/'
 
     def post(self, request):
+        api_url = 'https://libraries.colorado.edu/iii/sierra-api/v5'
         sierra_client_id = os.getenv('ROOM_BOOKING_SIERRA_API_KEY', None)
         sierra_client_secret = os.getenv(
             'ROOM_BOOKING_SIERRA_CLIENT_SECRET', None)
