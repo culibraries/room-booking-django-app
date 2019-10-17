@@ -34,7 +34,7 @@ class SierraTokenView(APIView):
         sierra_client_id = os.getenv('ROOM_BOOKING_SIERRA_API_KEY', None)
         sierra_client_secret = os.getenv(
             'ROOM_BOOKING_SIERRA_CLIENT_SECRET', None)
-        preStr = sierra_client_secret + ':' + sierra_client_id
+        preStr = "{0}:{1}".format(sierra_client_secret, sierra_client_id)
         encoded = base64.b64encode(str.encode(preStr))
         headers = {"Content-Type": "application/json",
                    "Authorization": "Basic {0}".format(encoded.decode("utf-8"))}
