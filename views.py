@@ -25,7 +25,7 @@ class LibcalTokenView(APIView):
         return Response(r.json())
 
 
-class SierraTokenView(APIView):
+class SierraSearchView(APIView):
     # permission_classes = (IsAuthenticated, IsAdmin)
     http_method_names = ['post']
 
@@ -46,4 +46,10 @@ class SierraTokenView(APIView):
         }
 
         r = requests.post("{0}/token".format(api_url), body, headers=headers)
-        return Response(r.json())
+        varFieldContent = request.data.get('key')
+        newHeaders = {"Content-Type": "application/json",
+                      "Authorization": "Bearer {0}".format(r.json()['access_token'])}
+        req = request.get("{0}/patrons/find?varFieldTag=u&varFieldContent={1}&fields=patronType,varFields".format(
+            api_url, varFieldContent), headers=newHeaders)
+
+        return Response(req.json())
