@@ -9,7 +9,7 @@ from .permission import IsAdmin
 
 
 class LibcalTokenView(APIView):
-    # permission_classes = (IsAuthenticated, IsAdmin)
+    permission_classes = (IsAuthenticated, IsAdmin)
     http_method_names = ['post']
 
     def post(self, request):
@@ -26,7 +26,7 @@ class LibcalTokenView(APIView):
 
 
 class SierraSearchView(APIView):
-    # permission_classes = (IsAuthenticated, IsAdmin)
+    permission_classes = (IsAuthenticated, IsAdmin)
     http_method_names = ['get']
 
     def get(self, request):
