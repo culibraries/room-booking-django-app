@@ -49,7 +49,7 @@ class SierraSearchView(APIView):
         varFieldContent = request.GET.get('key')
         newHeaders = {"Content-Type": "application/json",
                       "Authorization": "Bearer {0}".format(r.json()['access_token'])}
-        req = requests.get("{0}/patrons/find?varFieldTag=i&varFieldContent={1}&fields=patronType,varFields".format(
+        req = requests.get("{0}/patrons/find?varFieldTag=u&varFieldContent={1}&fields=patronType,varFields".format(
             api_url, varFieldContent), headers=newHeaders)
 
         return Response(req.json())
