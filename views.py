@@ -30,7 +30,7 @@ class SierraSearchView(APIView):
     http_method_names = ['get']
 
     def get(self, request):
-        api_url = 'https://libraries.colorado.edu/iii/sierra-api/v5'
+        api_url = 'https://libraries-old.colorado.edu/iii/sierra-api/v5'
         sierra_client_id = os.getenv('ROOM_BOOKING_SIERRA_API_KEY', None)
         sierra_client_secret = os.getenv(
             'ROOM_BOOKING_SIERRA_CLIENT_SECRET', None)
@@ -40,7 +40,7 @@ class SierraSearchView(APIView):
         headers = {"Content-Type": "application/json",
                    "Authorization": "Basic {0}".format(encoded.decode('utf-8'))}
 
-        url = 'https://libraries.colorado.edu/iii/sierra-api/v5/token'
+        url = 'https://libraries-old.colorado.edu/iii/sierra-api/v5/token'
         body = {
             'grant_type': 'client_credentials'
         }
